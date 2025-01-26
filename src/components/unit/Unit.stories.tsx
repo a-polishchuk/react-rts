@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Unit, UnitProps } from './Unit';
 
 export default {
+    title: 'Components/Unit',
     component: Unit,
 } as Meta<typeof Unit>;
 
