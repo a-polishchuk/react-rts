@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
 import styles from './Unit.module.css';
-import { cn } from '../utils/cn';
-import { Position } from '../types';
-import { getDistance } from '../utils/geometry';
+import { cn } from 'utils/cn';
+import { Position } from 'types';
+import { getDistance } from 'utils/geometry';
 
-export function Unit({ emoji, initialPosition, speed }: {
+export function Unit({
+    emoji,
+    initialPosition,
+    speed,
+}: {
     emoji: string;
     initialPosition: Position;
     speed: number;
@@ -19,8 +23,9 @@ export function Unit({ emoji, initialPosition, speed }: {
         }
         const handleMapClick = (e: MouseEvent) => {
             const newPos = { x: e.clientX, y: e.clientY };
-            const distance = getDistance(position, newPos);
-            setDuration(distance / speed);
+            const newDistance = getDistance(position, newPos);
+            const newDuration = newDistance / speed;
+            setDuration(newDuration);
             setPosition(newPos);
         }
         document.addEventListener('click', handleMapClick);
