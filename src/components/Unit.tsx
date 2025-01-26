@@ -4,15 +4,13 @@ import { cn } from 'utils/cn';
 import { Position } from 'types';
 import { getDistance } from 'utils/geometry';
 
-export function Unit({
-    emoji,
-    initialPosition,
-    speed,
-}: {
+export type UnitProps = {
     emoji: string;
     initialPosition: Position;
     speed: number;
-}) {
+};
+
+export function Unit({ emoji, initialPosition, speed }: UnitProps) {
     const [position, setPosition] = useState<Position>(initialPosition);
     const [duration, setDuration] = useState(0);
     const [isSelected, setIsSelected] = useState(false);

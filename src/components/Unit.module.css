@@ -1,11 +1,19 @@
 .unit {
-    font-size: 2rem;
     position: absolute;
     cursor: pointer;
     user-select: none;
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid transparent;
+    border-radius: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .selected {
-    filter: drop-shadow(0 0 4px #09add7);
+    background-color: rgba(47, 243, 47, 0.2);
+    border: 2px solid rgb(47, 243, 47);
 }
