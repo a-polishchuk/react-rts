@@ -1,0 +1,11 @@
+.unit {
+    font-size: 2rem;
+    position: absolute;
+    cursor: pointer;
+    user-select: none;
+    transform: translate(-50%, -50%);
+}
+
+.selected {
+    filter: drop-shadow(0 0 4px #09add7);
+}
