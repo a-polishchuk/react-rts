@@ -27,16 +27,16 @@ export function Unit({
             const newDuration = newDistance / speed;
             setDuration(newDuration);
             setPosition(newPos);
-        }
+        };
         document.addEventListener('click', handleMapClick);
         return () => {
             document.removeEventListener('click', handleMapClick);
-        }
+        };
     }, [isSelected, position, speed]);
 
     const handleClick = (e: React.MouseEvent) => {
         e.stopPropagation();
-        setIsSelected(prev => !prev);
+        setIsSelected((prev) => !prev);
     };
 
     return (
@@ -46,10 +46,10 @@ export function Unit({
             style={{
                 left: `${position.x}px`,
                 top: `${position.y}px`,
-                transition: `left ${duration}s linear, top ${duration}s linear`
+                transition: `left ${duration}s linear, top ${duration}s linear`,
             }}
         >
             {emoji}
         </div>
     );
-};
+}
