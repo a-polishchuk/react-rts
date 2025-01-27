@@ -9,3 +9,4 @@ export default {
 export const Default: StoryObj = {
     render: () => <CrosshairController />,
 };
+Default.storyName = 'Crosshair';
