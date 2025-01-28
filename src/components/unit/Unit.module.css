@@ -14,6 +14,6 @@
 }
 
 .selected {
-    border: 1px dashed var(--selection-active);
+    border: 1px solid var(--selection-active);
     background-color: var(--selection-inactive);
 }
