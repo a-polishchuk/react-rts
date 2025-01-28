@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { getAngle, getDistance, getMiddle } from 'utils/geometry';
-import { Position } from 'types';
+import { Position } from 'utils/geometry';
 
 export type LineProps = {
     from: Position;

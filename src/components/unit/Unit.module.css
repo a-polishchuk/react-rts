@@ -5,14 +5,15 @@
     font-size: 2rem;
     width: 2rem;
     height: 2rem;
-    border: 2px solid transparent;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid var(--selection-inactive);
 }
 
 .selected {
-    border: 1px dashed #1dcc25;
+    border: 1px dashed var(--selection-active);
+    background-color: var(--selection-inactive);
 }

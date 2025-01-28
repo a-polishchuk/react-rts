@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Line, LineProps } from './Line';
 import { useEffect, useState } from 'react';
-import { Position } from 'types';
+import { Position } from 'utils/geometry';
 
 export default {
     component: Line,

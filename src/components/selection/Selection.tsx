@@ -1,6 +1,6 @@
 import { useState, MouseEventHandler } from 'react';
 import styles from './Selection.module.css';
-import { Position } from 'types';
+import { Position } from 'utils/geometry';
 
 export type SelectionTarget = {
     id: string;

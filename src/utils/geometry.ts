@@ -1,4 +1,7 @@
-import { Position } from '../types';
+export type Position = {
+    x: number;
+    y: number;
+};
 
 export function getDistance(a: Position, b: Position) {
     return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);

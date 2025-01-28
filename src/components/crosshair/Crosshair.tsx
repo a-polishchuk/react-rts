@@ -1,6 +1,5 @@
-import { Position } from 'types';
 import styles from './Crosshair.module.css';
-
+import { Position } from 'utils/geometry';
 export type CrosshairProps = {
     position: Position;
 };

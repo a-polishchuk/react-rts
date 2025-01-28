@@ -1,4 +1,4 @@
-import { Position } from 'types';
+import { Position } from 'utils/geometry';
 import { Line, LineProps } from './Line';
 
 export function mapToLines(

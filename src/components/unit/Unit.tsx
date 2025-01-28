@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from './Unit.module.css';
 import { cn } from 'utils/cn';
-import { Position } from 'types';
+import { Position } from 'utils/geometry';
 import { getDistance } from 'utils/geometry';
 
 export type UnitProps = {

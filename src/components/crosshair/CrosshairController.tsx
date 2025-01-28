@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Position } from 'types';
+import { Position } from 'utils/geometry';
 import { Crosshair } from './Crosshair';
 
 export function CrosshairController() {
