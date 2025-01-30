@@ -10,7 +10,6 @@ export type UnitProps = {
     selected: boolean;
     children: ReactNode;
     onClick?: (e: React.MouseEvent) => void;
-    onAnimationEnd?: () => void;
 };
 
 export function Unit({
@@ -19,7 +18,6 @@ export function Unit({
     selected,
     children,
     onClick,
-    onAnimationEnd,
 }: UnitProps) {
     const [displayPosition, setDisplayPosition] = useState(position);
     const [duration, setDuration] = useState(0);
@@ -35,7 +33,6 @@ export function Unit({
     return (
         <div
             onClick={onClick}
-            onAnimationEnd={onAnimationEnd}
             className={cn(styles.unit, selected && styles.selected)}
             style={{
                 left: `${displayPosition.x}px`,
