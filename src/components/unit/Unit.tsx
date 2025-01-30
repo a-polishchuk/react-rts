@@ -1,53 +1,49 @@
-import { useState, useEffect } from 'react';
+import { useEffect, ReactNode, useRef, useState } from 'react';
 import styles from './Unit.module.css';
 import { cn } from 'utils/cn';
 import { Position } from 'utils/geometry';
 import { getDistance } from 'utils/geometry';
 
 export type UnitProps = {
-    emoji: string;
-    initialPosition: Position;
+    position: Position;
     speed: number;
+    selected: boolean;
+    children: ReactNode;
+    onClick?: (e: React.MouseEvent) => void;
+    onAnimationEnd?: () => void;
 };
 
-export function Unit({ emoji, initialPosition, speed }: UnitProps) {
-    const [position, setPosition] = useState<Position>(initialPosition);
+export function Unit({
+    position,
+    speed,
+    selected,
+    children,
+    onClick,
+    onAnimationEnd,
+}: UnitProps) {
+    const [displayPosition, setDisplayPosition] = useState(position);
     const [duration, setDuration] = useState(0);
-    const [isSelected, setIsSelected] = useState(false);
+    const prevPositionRef = useRef(position);
 
     useEffect(() => {
-        if (!isSelected) {
-            return;
-        }
-        const handleMapClick = (e: MouseEvent) => {
-            const newPos = { x: e.clientX, y: e.clientY };
-            const newDistance = getDistance(position, newPos);
-            const newDuration = newDistance / speed;
-            setDuration(newDuration);
-            setPosition(newPos);
-        };
-        document.addEventListener('click', handleMapClick);
-        return () => {
-            document.removeEventListener('click', handleMapClick);
-        };
-    }, [isSelected, position, speed]);
-
-    const handleClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        setIsSelected((prev) => !prev);
-    };
+        const newDistance = getDistance(position, prevPositionRef.current);
+        setDuration(newDistance / speed);
+        setDisplayPosition(position);
+        prevPositionRef.current = position;
+    }, [position, speed]);
 
     return (
         <div
-            onClick={handleClick}
-            className={cn(styles.unit, isSelected && styles.selected)}
+            onClick={onClick}
+            onAnimationEnd={onAnimationEnd}
+            className={cn(styles.unit, selected && styles.selected)}
             style={{
-                left: `${position.x}px`,
-                top: `${position.y}px`,
+                left: `${displayPosition.x}px`,
+                top: `${displayPosition.y}px`,
                 transition: `left ${duration}s linear, top ${duration}s linear`,
             }}
         >
-            {emoji}
+            {children}
         </div>
     );
 }

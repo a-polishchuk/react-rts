@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Progress, ProgressProps } from './Progress';
 import { useState } from 'react';
 import { useInterval } from 'hooks/use-interval';
+import { COLORS } from 'types/colors';
 
 export default {
     title: 'Components/Progress',
@@ -10,7 +11,7 @@ export default {
 
 export const Default: StoryObj<ProgressProps> = {
     args: {
-        color: '#1dcc25',
+        color: COLORS.selectionActive,
         progress: 50,
     },
     render: Render,
