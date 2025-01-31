@@ -10,15 +10,19 @@ import { useMapClick } from 'hooks/use-map-click';
 
 const EMOJIS = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘'];
 const DEFAULT_RALLY_OFFSET: Position = { x: 100, y: 100 };
+const SPAWN_DELAY = 1000;
 
 export type PlanetControllerProps = {
     position: Position;
+    onSpawn: (position: Position) => void;
 };
 
-export function PlanetController({ position }: PlanetControllerProps) {
+export function PlanetController({ position, onSpawn }: PlanetControllerProps) {
     const [isSelected, setIsSelected] = useState(false);
     const [isPickingRallyPoint, setIsPickingRallyPoint] = useState(false);
     const [rallyPoint, setRallyPoint] = useState<Position>(add(position, DEFAULT_RALLY_OFFSET));
+
+    const [timeouts, setTimeouts] = useState<number[]>([]);
 
     useMapClick((clickPosition) => {
         if (isPickingRallyPoint) {
@@ -29,6 +33,20 @@ export function PlanetController({ position }: PlanetControllerProps) {
     const toggleRallyPoint: MouseEventHandler<HTMLDivElement> = (event) => {
         event.stopPropagation();
         setIsPickingRallyPoint((val) => !val);
+    };
+
+    const spawn: MouseEventHandler<HTMLButtonElement> = (event) => {
+        event.stopPropagation();
+        const timeout = setTimeout(() => {
+            onSpawn(
+                add(rallyPoint, {
+                    x: Math.random() * 20 - 10,
+                    y: Math.random() * 20 - 10,
+                }),
+            );
+            setTimeouts((prev) => prev.filter((t) => t !== timeout));
+        }, SPAWN_DELAY);
+        setTimeouts((prev) => [...prev, timeout]);
     };
 
     return (
@@ -64,6 +82,9 @@ export function PlanetController({ position }: PlanetControllerProps) {
                     <>
                         <div className={styles.progress}>
                             <Progress color={COLORS.selectionActive} progress={50} />
+                        </div>
+                        <div className={styles.toolbar}>
+                            <button onClick={spawn}>{`👾 - ${timeouts.length}`}</button>
                         </div>
                     </>
                 )}
