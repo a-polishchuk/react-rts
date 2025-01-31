@@ -39,9 +39,22 @@ export function subtract(a: Position, b: Position): Position {
     };
 }
 
+/**
+ * Multiplies the given position (vector) by the given factor
+ */
 export function multiply(a: Position, factor: number): Position {
     return {
         x: a.x * factor,
         y: a.y * factor,
+    };
+}
+
+/**
+ * @returns a random position within a radius of the given position
+ */
+export function randomize(a: Position, radius: number): Position {
+    return {
+        x: a.x + (Math.random() - 0.5) * radius,
+        y: a.y + (Math.random() - 0.5) * radius,
     };
 }

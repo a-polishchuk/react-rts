@@ -9,14 +9,23 @@ export default {
     component: Progress,
 } as Meta<typeof Progress>;
 
-export const Default: StoryObj<ProgressProps> = {
+export const Snap: StoryObj<ProgressProps> = {
     args: {
         color: COLORS.selectionActive,
         progress: 50,
+        smoothTransition: false,
     },
     render: Render,
 };
-Default.storyName = 'Progress';
+
+export const Smooth: StoryObj<ProgressProps> = {
+    args: {
+        color: COLORS.selectionActive,
+        progress: 50,
+        smoothTransition: true,
+    },
+    render: Render,
+};
 
 function Render(args: ProgressProps) {
     const [progress, setProgress] = useState(args.progress);

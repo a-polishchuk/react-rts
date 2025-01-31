@@ -7,5 +7,8 @@
 
 .progress {
     height: 100%;
+}
+
+.smooth {
     transition: width 0.1s linear;
 }
