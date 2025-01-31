@@ -1,11 +1,9 @@
 .root {
-    position: absolute;
     user-select: none;
     cursor: pointer;
     font-size: 4rem;
     width: 3.5rem;
     height: 3.5rem;
-    transform: translate(-50%, -50%);
     border: 2px solid #0004;
     border-radius: 50%;
     overflow: hidden;

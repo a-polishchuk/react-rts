@@ -1,0 +1,37 @@
+.root {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.progress {
+    position: absolute;
+    width: 100px;
+    bottom: calc(100% + 0.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.toolbar {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+}
+
+.rallyPoint {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    background-color: var(--selection-inactive);
+    border-radius: 50%;
+}
+
+.rallyPointSelected {
+    background-color: var(--selection-active);
+}

@@ -1,23 +1,15 @@
 import styles from './Planet.module.css';
 import { useInterval } from 'hooks/use-interval';
 import { useState } from 'react';
-import { Position } from 'utils/geometry';
 
 export type PlanetProps = {
-    position: Position;
     emojis: string[];
     color: string;
     rotationDelay: number;
     onClick: () => void;
 };
 
-export function Planet({
-    position,
-    emojis,
-    color,
-    rotationDelay,
-    onClick,
-}: PlanetProps) {
+export function Planet({ emojis, color, rotationDelay, onClick }: PlanetProps) {
     const [emojiIndex, setEmojiIndex] = useState(0);
 
     useInterval(() => {
@@ -29,11 +21,7 @@ export function Planet({
     return (
         <div
             className={styles.root}
-            style={{
-                left: position.x,
-                top: position.y,
-                borderColor: color,
-            }}
+            style={{ borderColor: color }}
             onClick={onClick}
         >
             {emojis[emojiIndex]}
